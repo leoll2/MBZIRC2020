@@ -1,0 +1,21 @@
+[submodule "lib/catkin_simple"]
+	path = lib/catkin_simple
+	url = https://github.com/catkin/catkin_simple.git
+[submodule "lib/eigen_catkin"]
+	path = lib/eigen_catkin
+	url = https://github.com/ethz-asl/eigen_catkin.git
+[submodule "lib/glog_catkin"]
+	path = lib/glog_catkin
+	url = https://github.com/ethz-asl/glog_catkin.git
+[submodule "lib/console_bridge"]
+	path = lib/console_bridge
+	url = https://github.com/ros/console_bridge.git
+[submodule "lib/control_toolbox"]
+	path = lib/control_toolbox
+	url = https://github.com/ros-controls/control_toolbox.git
+[submodule "lib/mavlink"]
+	path = lib/mavlink
+	url = https://github.com/mavlink/mavlink.git
+[submodule "lib/mavros"]
+	path = lib/mavros
+	url = https://github.com/mavlink/mavros.git

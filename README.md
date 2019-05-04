@@ -59,6 +59,13 @@ catkin build
 source devel/setup.bash
 ```
 
+Create links to Ardupilot and gazebo models folders:
+```
+ln -s <path/to/ardupilot> src/ardupilot
+ln -s <path/to/gazebo/models> src/gazebo_models
+```
+
+Add environment variables:
 ```
 echo "export GAZEBO_MODEL_PATH=\${GAZEBO_MODEL_PATH}:$(rospack find mbzirc_gazebo)/gazebo_models" >> ~/.bash_mbzirc
 echo "export GAZEBO_PLUGIN_PATH=\${GAZEBO_PLUGIN_PATH}:$(catkin locate)/build/mbzirc_gazebo" >> ~/.bash_mbzirc

@@ -13,12 +13,6 @@
 [submodule "lib/control_toolbox"]
 	path = lib/control_toolbox
 	url = https://github.com/ros-controls/control_toolbox.git
-[submodule "lib/mavlink"]
-	path = lib/mavlink
-	url = https://github.com/mavlink/mavlink.git
-[submodule "lib/mavros"]
-	path = lib/mavros
-	url = https://github.com/mavlink/mavros.git
 [submodule "mbzirc_gazebo"]
 	path = mbzirc_gazebo
 	url = https://github.com/emapall/mbzirc_gazebo.git

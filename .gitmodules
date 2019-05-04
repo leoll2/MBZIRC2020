@@ -25,3 +25,6 @@
 [submodule "lib/geographic_info"]
 	path = lib/geographic_info
 	url = https://github.com/ros-geographic-info/geographic_info.git
+[submodule "lib/unique_identifier"]
+	path = lib/unique_identifier
+	url = https://github.com/ros-geographic-info/unique_identifier.git

@@ -89,8 +89,15 @@ the following item to the dictionary:
                                 "MBZIRC_params/gazebo-MBZIRColo.parm"],
 },
 ```
+
+### Test Gazebo + Ardupilot
+
 Now go back to the `ardupilot` directory:
 ```
 cd ArduCopter
 sim_vehicle.py --console -f gazebo-MBZIRColo
+```
+Move to `catkin_ws\src\mbzirc_gazebo`, then:
+```
+gazebo --verbose gazebo_worlds/drone_plus_env.world
 ```

@@ -19,3 +19,6 @@
 [submodule "lib/mavros"]
 	path = lib/mavros
 	url = https://github.com/mavlink/mavros.git
+[submodule "mbzirc_gazebo"]
+	path = mbzirc_gazebo
+	url = https://github.com/emapall/mbzirc_gazebo.git

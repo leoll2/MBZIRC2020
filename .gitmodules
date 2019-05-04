@@ -22,3 +22,6 @@
 [submodule "mbzirc_gazebo"]
 	path = mbzirc_gazebo
 	url = https://github.com/emapall/mbzirc_gazebo.git
+[submodule "lib/geographic_info"]
+	path = lib/geographic_info
+	url = https://github.com/ros-geographic-info/geographic_info.git

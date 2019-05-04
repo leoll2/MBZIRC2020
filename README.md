@@ -46,6 +46,7 @@ TODO
 
 ```
 TODO
+echo "export GAZEBO_MODEL_PATH=\${GAZEBO_MODEL_PATH}:$(catkin locate)/src/gazebo_models" >> ~/.bash_mbzirc
 ```
 
 ### Initialize and configure catkin workspace
@@ -59,8 +60,37 @@ source devel/setup.bash
 ```
 
 ```
-echo "export GAZEBO_MODEL_PATH=\${GAZEBO_MODEL_PATH}:$(rospack find mbzirc_sitl)/gazebo_models" >> ~/.bash_mbzirc
-echo "export GAZEBO_PLUGIN_PATH=\${GAZEBO_PLUGIN_PATH}:$(catkin locate)/build/mbzirc_sitl" >> ~/.bash_mbzirc
+echo "export GAZEBO_MODEL_PATH=\${GAZEBO_MODEL_PATH}:$(rospack find mbzirc_gazebo)/gazebo_models" >> ~/.bash_mbzirc
+echo "export GAZEBO_PLUGIN_PATH=\${GAZEBO_PLUGIN_PATH}:$(catkin locate)/build/mbzirc_gazebo" >> ~/.bash_mbzirc
 echo "export GAZEBO_PLUGIN_PATH=\${GAZEBO_PLUGIN_PATH}:/usr/lib/x86_64-linux-gnu/gazebo-9/plugins/" >> ~/.bash_mbzirc
 source ~/.bashrc
+```
+
+### Add our vehicle parameters to Ardupilot
+```
+mkdir src/ardupilot/Tools/autotest/MBZIRC_params
+cp src/mbzirc_gazebo/ardupilotStuff/MBZIRC-provaParams/gazebo-MBZIRColo.parm src/ardupilot/Tools/autotest/MBZIRC_params
+```
+Now edit `src/ardupilot/Tools/autotest/pysim/vehicleinfo.py`, adding below
+
+```
+"gazebo-iris": {
+  "waf_target": "bin/arducopter",
+  "default_params_filename": ["default_params/copter.parm",
+                              "default_params/gazebo-iris.parm"],
+},
+```
+the following item to the dictionary:
+```
+# MBZIRColo
+"gazebo-MBZIRColo":{
+    "waf_target": "bin/arducopter",
+    "default_params_filename":["default_params/copter.parm",
+                                "MBZIRC_params/gazebo-MBZIRColo.parm"],
+},
+```
+Now go back to the `ardupilot` directory:
+```
+cd ArduCopter
+sim_vehicle.py --console -f gazebo-MBZIRColo
 ```

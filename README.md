@@ -86,11 +86,27 @@ source ~/.bashrc
 
 ### Initialize and configure catkin workspace
 
-It's time to prepare the actual ROS workspace for our drone. You can do it in any folder, we suggest the home.
+It's now time to prepare the actual ROS workspace for our drone. 
+
+| WARNING: not all the required submodules are publicly released, so you need to ask for pemissions to the respective authors. Please contact @leoll2 for more details. |
+| --- |
+
+First of all, clone this repo. You can do it in any folder, we suggest the home.
 ```
 mkdir drone_ws
 cd drone_ws
 git clone --recurse-submodules https://github.com/leoll2/MBZIRC2020.git src
+```
+
+Checkout to the correct branch of the vision module:
+```
+cd MBZIRC2020/mbzirc_vision/MBZIRC2020Vision/
+git checkout ros_integrated
+cd -
+```
+
+Now build all the ROS modules:
+```
 catkin build
 source devel/setup.bash
 ```
@@ -99,10 +115,7 @@ If you don't want to source ```devel/setup.bash``` on every terminal opening, ju
 echo "source $PWD/devel/setup.bash" >> ~/.bash_mbzirc
 ```
 
-##### Please note 
-If you want to clone the repository by htmls, then for pushing/pulling you are going to be prompted to insert github username and email every single time;
-If you want to avoid this, you need to use SSH to clone the repository ```git@github.com:leoll2/MBZIRC2020.git```, and add the sssh key to your lcal pc and github account. 
-Obviously, you can always copy the repo via https and add an ssh remote later.
+> **Tip**: if you clone the repository by https, then for pushing/pulling you will be prompted to insert github username and pass every single time; to avoid this, you may use SSH to clone the repository (`git@github.com:leoll2/MBZIRC2020.git`), and add the ssh key to your local pc and github account. Obviously, you can always copy the repo via https and add the ssh remote later.|
 
 Create links to Ardupilot and gazebo models folders (not strictly necessary, but handy):
 ```

@@ -99,6 +99,11 @@ If you don't want to source ```devel/setup.bash``` on every terminal opening, ju
 echo "source $PWD/devel/setup.bash" >> ~/.bash_mbzirc
 ```
 
+##### Please note 
+If you want to clone the repository by htmls, then for pushing/pulling you are going to be prompted to insert github username and email every single time;
+If you want to avoid this, you need to use SSH to clone the repository ```git@github.com:leoll2/MBZIRC2020.git```, and add the sssh key to your lcal pc and github account. 
+Obviously, you can always copy the repo via https and add an ssh remote later.
+
 Create links to Ardupilot and gazebo models folders (not strictly necessary, but handy):
 ```
 ln -s <path/to/ardupilot> src/ardupilot

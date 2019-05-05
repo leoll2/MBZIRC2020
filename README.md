@@ -94,6 +94,10 @@ git clone --recurse-submodules https://github.com/leoll2/MBZIRC2020.git src
 catkin build
 source devel/setup.bash
 ```
+If you don't want to source ```devel/setup.bash``` on every terminal opening, just
+```
+echo "source $PWD/devel/setup.bash" >> ~/.bash_mbzirc
+```
 
 Create links to Ardupilot and gazebo models folders (not strictly necessary, but handy):
 ```

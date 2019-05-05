@@ -22,3 +22,6 @@
 [submodule "lib/unique_identifier"]
 	path = lib/unique_identifier
 	url = https://github.com/ros-geographic-info/unique_identifier.git
+[submodule "mbzirc_vision"]
+	path = mbzirc_vision
+	url = https://github.com/leoll2/mbzirc_vision

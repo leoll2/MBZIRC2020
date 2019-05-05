@@ -1,12 +1,32 @@
 # MBZIRC2020
-Drone of the Sant'Anna team for the MBZIRC 2020 challenge 
+
+Sant'Anna team drone for the MBZIRC 2020 challenge 
 
 ## Installation
 
-### Dependencies
+### Basic dependencies
+```
+sudo apt install build-essential python-dev python-pip
+sudo apt install cmake git mercurial
+```
+
+### Install ROS
 
 ```
-TODO
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt update
+sudo apt install ros-melodic-desktop-full
+sudo rosdep init
+rosdep update
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+
+#### Install some ROS packages
+```
+sudo apt install python-rosinstall python-rosinstall-generator python-wstool python-catkin-tools
+sudo apt install ros-melodic-octomap-ros
 sudo apt install ros-melodic-mavros ros-melodic-mavros-extras
 ```
 
@@ -24,42 +44,58 @@ if [ -f ~/.bash_mbzirc ]; then
 fi
 ```
 
-### Add ROS env variable
-```
-echo "source /opt/ros/melodic/setup.bash" >> ~/.bash_mbzirc
-source ~/.bashrc
-```
 
 ### Ardupilot
 
+Now you have to install Ardupilot in a directory of your choice, let's say the home:
 ```
-TODO
+cd ~
+git clone --recurse-submodules https://github.com/ArduPilot/ardupilot
+cd ardupilot
+chmod a+x Tools/environment_install/install-prereqs-ubuntu.sh
+Tools/environment_install/install-prereqs-ubuntu.sh -y
+source ~/.profile
 ```
 
-### (Optional) Test Ardupilot
+#### (Optional) Test Ardupilot
+
+If you want to verify that your Ardupilot installation was successful:
 
 ```
-TODO
+cd ArduCopter
+sim_vehicle.py -j4 --map --console
+```
+And in the terminal type:
+```
+mode GUIDED
+arm throttle
+takeoff 100 
 ```
 
 ### Download Gazebo DB
 
+The next step is to install the predefined models of Gazebo. Feel free to choose the directory where to do so (e.g. the home):
 ```
-TODO
-echo "export GAZEBO_MODEL_PATH=\${GAZEBO_MODEL_PATH}:$(catkin locate)/src/gazebo_models" >> ~/.bash_mbzirc
+cd ~
+hg clone https://bitbucket.org/osrf/gazebo_models
+cd gazebo_models
+hg checkout zephyr_demos
+echo "export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$PWD" >> ~/.bash_mbzirc
+source ~/.bashrc
 ```
 
 ### Initialize and configure catkin workspace
 
+It's time to prepare the actual ROS workspace for our drone. You can do it in any folder, we suggest the home.
 ```
-mkdir catkin_ws
-cd catkin_ws
+mkdir drone_ws
+cd drone_ws
 git clone --recurse-submodules https://github.com/leoll2/MBZIRC2020.git src
 catkin build
 source devel/setup.bash
 ```
 
-Create links to Ardupilot and gazebo models folders:
+Create links to Ardupilot and gazebo models folders (not strictly necessary, but handy):
 ```
 ln -s <path/to/ardupilot> src/ardupilot
 ln -s <path/to/gazebo/models> src/gazebo_models

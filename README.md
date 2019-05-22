@@ -166,3 +166,12 @@ Move to `catkin_ws\src\mbzirc_gazebo`, then:
 ```
 gazebo --verbose gazebo_worlds/drone_plus_env.world
 ```
+
+-------
+## START THE SIMULATION FRAMEWORK
+###### Gazebo
+First, start gazebo (+ ardupilot), having in mind the fact that gazebo is saving images on the file system.
+Refer to mbzirc_gazebo repo
+###### Vision
+Secondly, start the image processing part.
+Refer to MBZRIC2020Vision repo (inside the mbzirc_vision repo, this last one being in this repo)

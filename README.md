@@ -106,6 +106,9 @@ cd -
 ```
 
 Now build all the ROS modules:
+Possible add: 
+sudo apt-get install ros-melodic-realtime_tools
+
 ```
 catkin build
 source devel/setup.bash

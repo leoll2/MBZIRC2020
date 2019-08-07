@@ -43,7 +43,7 @@ if [ -f ~/.bash_mbzirc ]; then
     . ~/.bash_mbzirc
 fi
 ```
-
+To find the file you have to go in your /home folder and click on "show hidden files".
 
 ### Ardupilot
 
@@ -100,7 +100,7 @@ git clone --recurse-submodules https://github.com/leoll2/MBZIRC2020.git src
 
 Checkout to the correct branch of the vision module:
 ```
-cd MBZIRC2020/mbzirc_vision/MBZIRC2020Vision/
+cd src/mbzirc_vision/MBZIRC2020Vision/
 git checkout ros_integrated
 cd -
 ```
@@ -120,7 +120,7 @@ echo "source $PWD/devel/setup.bash" >> ~/.bash_mbzirc
 
 > **Tip**: if you clone the repository by https, then for pushing/pulling you will be prompted to insert github username and pass every single time; to avoid this, you may use SSH to clone the repository (`git@github.com:leoll2/MBZIRC2020.git`), and add the ssh key to your local pc and github account. Obviously, you can always copy the repo via https and add the ssh remote later.|
 
-Create links to Ardupilot and gazebo models folders (not strictly necessary, but handy):
+Create links to Ardupilot and gazebo models folders (not strictly necessary, but handy), usually the path will be something like /home/your_username/ardupilot:
 ```
 ln -s <path/to/ardupilot> src/ardupilot
 ln -s <path/to/gazebo/models> src/gazebo_models
@@ -139,7 +139,7 @@ source ~/.bashrc
 mkdir src/ardupilot/Tools/autotest/MBZIRC_params
 cp src/mbzirc_gazebo/ardupilotStuff/MBZIRC-provaParams/gazebo-MBZIRColo.parm src/ardupilot/Tools/autotest/MBZIRC_params
 ```
-Now edit `src/ardupilot/Tools/autotest/pysim/vehicleinfo.py`, adding below
+Now edit `src/ardupilot/Tools/autotest/pysim/vehicleinfo.py`, search in the code for:
 
 ```
 "gazebo-iris": {
@@ -148,7 +148,7 @@ Now edit `src/ardupilot/Tools/autotest/pysim/vehicleinfo.py`, adding below
                               "default_params/gazebo-iris.parm"],
 },
 ```
-the following item to the dictionary:
+and add the following item underneat it:
 ```
 # MBZIRColo
 "gazebo-MBZIRColo":{
@@ -165,7 +165,7 @@ Now go back to the `ardupilot` directory:
 cd ArduCopter
 sim_vehicle.py --console -f gazebo-MBZIRColo
 ```
-Move to `catkin_ws\src\mbzirc_gazebo`, then:
+Move to `drone_ws\src\mbzirc_gazebo`, then:
 ```
 gazebo --verbose gazebo_worlds/drone_plus_env.world
 ```
